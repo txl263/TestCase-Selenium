@@ -42,6 +42,9 @@ class Wukong(unittest.TestCase):
     def tearDown(self):
         self.driver.quit()
         self.assertEqual([],self.verificationErrors)
-
+        ‘‘‘
+        tearDown 方法在每个测试方法执行后调用，这个地方做所有清理工作，如退出浏览器等。 
+        self.assertEqual([], self.verificationErrors) 是个难点，
+        对前面verificationErrors方法获得的列表进行比较；如查verificationErrors的列表不为空，输出列表中的报错信息。‘‘‘
 if __name__=="__main__":
     unittest.main() #执行用例#
