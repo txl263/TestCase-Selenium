@@ -14,13 +14,15 @@ class Wukong(unittest.TestCase):
     def setUp(self):
         self.driver = webdriver.Safari()
         self.driver.implicitly_wait(30)
-        self.baseUrl = "http://test3.wukonglicai.com/"
+        self.baseUrl = "http://test3.wukonglicai.com"
         self.verificationErrors=[]  #脚本运行时，错误的信息将被打印到这个列表中#
         self.accept_next_alert=True  #是否继续接受下一个警告#
-    def specialSale_obj_pro():
+    def test_specialSale_obj_pro(self):
         driver = self.driver
-        driver.get(self.base_url + "/weixin/specialSale/index.html")
+        driver.get(self.baseUrl + "/weixin/specialSale/index.html")
         driver.find_element_by_xpath("html/body/div[1]/div[1]/a/div[1]/p/span[1]").send_keys("13011898794")
+        time.sleep(2)
+
     def is_element_present(self, how, what):
         try: self.driver.find_element(by=how, value=what)
         except NoSuchElementException, e: return False
@@ -40,11 +42,11 @@ class Wukong(unittest.TestCase):
             return alert_text
         finally: self.accept_next_alert = True
     def tearDown(self):
-        self.driver.quit()
+        #self.driver.quit()
         self.assertEqual([],self.verificationErrors)
-        ‘‘‘
+        '''
         tearDown 方法在每个测试方法执行后调用，这个地方做所有清理工作，如退出浏览器等。 
         self.assertEqual([], self.verificationErrors) 是个难点，
-        对前面verificationErrors方法获得的列表进行比较；如查verificationErrors的列表不为空，输出列表中的报错信息。‘‘‘
+        对前面verificationErrors方法获得的列表进行比较；如查verificationErrors的列表不为空，输出列表中的报错信息。'''
 if __name__=="__main__":
     unittest.main() #执行用例#
