@@ -2,15 +2,13 @@
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.common import keys     
-#from selenium.webdriver.common.keys import Keys
+#from selenium.webdriver.common.keys import Keys#
 from selenium.webdriver.support import select
-#from selenium.webdriver.support.ui import Select
+#from selenium.webdriver.support.ui import Select#
 from selenium.common import exceptions
 from selenium.common.exceptions import NoSuchElementException
 from selenium.common.exceptions import NoAlertPresentException
 import unittest,time,re
-
-
 #setUp 用于设置初始化的部分，在测试用例执行前，这个方法中的函数将先被调用。这里将浏览器的调用和URL的访问放到初始化部分。#
 class Wukong(unittest.TestCase):
     def setUp(self):
@@ -44,9 +42,6 @@ class Wukong(unittest.TestCase):
     def tearDown(self):
         self.driver.quit()
         self.assertEqual([],self.verificationErrors)
-        ‘‘‘
-        tearDown 方法在每个测试方法执行后调用，这个地方做所有清理工作，如退出浏览器等。 
-        self.assertEqual([], self.verificationErrors) 是个难点，
-        对前面verificationErrors方法获得的列表进行比较；如查verificationErrors的列表不为空，输出列表中的报错信息。‘‘‘
+
 if __name__=="__main__":
     unittest.main() #执行用例#
