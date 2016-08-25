@@ -12,4 +12,4 @@ Selenium TestCase Wukong
 1. 控件-页面-测试用例
 2. 场景片段-场景
 
-  
+  ![场景片段-场景](./Image/片段场景.jpg)
