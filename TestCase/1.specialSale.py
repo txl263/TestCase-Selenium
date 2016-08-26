@@ -20,7 +20,9 @@ class Wukong(unittest.TestCase):
     def test_specialSale_obj_pro(self):
         driver = self.driver
         driver.get(self.baseUrl + "/weixin/specialSale/index.html")
-        driver.find_element_by_xpath("html/body/div[1]/div[1]/a/div[1]/p/span[1]")
+        driver.find_element_by_id("bt").click()
+        print (driver.find_element_by_xpath("html/body/div[1]/div[1]/a/div[1]/p/span[1]").text)
+        
         time.sleep(2)
 
     def is_element_present(self, how, what):
