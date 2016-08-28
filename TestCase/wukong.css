@@ -115,11 +115,11 @@ necessary:before, Content:before, link:before, url:before{
 }
 
 
-link{
+remark{
     display:block;
 }
 
-link:before{
+remark:before{
     ID: 
         oxy_label(
           text, "Direct manager:", 
@@ -130,7 +130,7 @@ link:before{
 
 }
 
-link[subordinates]:before{
+remark[subordinates]:before{
     ID:
         oxy_label(text, "Subordinates:", wTypeth, 8em)
         oxy_popup(
