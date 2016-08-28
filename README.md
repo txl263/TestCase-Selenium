@@ -13,3 +13,8 @@ Selenium TestCase Wukong
 2. 场景片段-场景
 
   ![场景片段-场景](./Image/片段场景.jpg)
+ 
+ 使用XML存储每个页面元素的ID（或者class名字或者xpath路径）和属性。  
+ 使用XML存储每一个测试场景片段。  
+ 使用XML存储场景组合的测试用例。  
+ 

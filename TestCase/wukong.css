@@ -1,0 +1,166 @@
+
+TestCaseSuite:before {
+    display:block;    
+    padding: 1em;
+    font-size: 1.8em;
+    ID: "/weixin/specialSale/index.html";
+    font-weight: bold;
+    color:#EEEEEE;    
+    background-color: rgba(50, 50, 50, 0.6);
+}
+
+TestCaseSuite{
+    display:block;      
+    margin:2em;     
+    font-ID: sans-serif;
+}
+
+TestCase{
+    display:block;
+    
+    /*Move children to the right*/
+    padding-left:315px;
+    padding-top: 0.5em;    
+    background-color: rgb(194, 218, 223);
+    
+    /*Each employee has a picture. It will be used as background*/
+    background-image: oxy_url(
+        oxy_base-uri(), 
+        attr("photo"));
+    background-repeat:no-repeat;
+    background-position:top left;
+    min-wTypeth:20em;
+    border-right: 1px solType #999;
+    border-bottom: 1px solType #999;
+    margin-bottom: 2em;
+}
+
+TestCase > * {
+    padding-bottom: 0.2em;
+    background-color: rgba(0,0,0, 0.3);
+}
+
+TestCase:after{
+    padding:0 0 0.5em 0;
+    font-ID:monospace;
+    font-size: 1em;
+    text-align:right;
+    wTypeth:100%;        
+    font-ID:monospace;
+    /* 
+	The actual button to action mapping is defined in the file:
+		
+	${frameworks}/sample_frameworks/css/personal.css
+	
+	The action is defined in the "Personal" framework. See Options > Document Types
+   */    
+}
+
+TestCase[photo$="unknown.png"] {
+    display: block;
+    ID:
+        oxy_label(
+          text, "Picture:", 
+          wTypeth, 8em)
+        oxy_urlChooser(columns, 20, edit, "@photo");
+}
+
+TestCase > necessary{
+    display:block;
+    padding-top:1em;
+    padding-bottom:1em;
+    padding-right:2em;
+    background-color: rgba(255,255,255, 0.7);    
+    font-size: 1.4em;
+    text-align: right;
+ 
+}
+
+Content{
+    display:block;
+    -oxy-show-placeholder:always;
+    color:green;
+    font-size: 0.6em;
+}
+
+Content:before{
+    ID:"Content:";
+}
+
+url {
+    display:block;
+}
+
+url:before{
+    ID: 
+        oxy_label(
+          text, "Homepage:", 
+          wTypeth, 8em)
+        oxy_textfield( 
+            edit, "@href",
+            columns, 32);
+}
+
+
+necessary:before, Content:before, link:before, url:before{
+    color:white;
+    wTypeth:10em;
+    display:inline;
+    font-weight:bold;
+    padding-left: 1em;
+}
+
+necessary:before, Content:before, link:before, url:before{
+    wTypeth:9em;
+}
+
+
+link{
+    display:block;
+}
+
+link:before{
+    ID: 
+        oxy_label(
+          text, "Direct manager:", 
+          wTypeth, 8em)
+        oxy_combobox( 
+            edit, "@manager",
+            columns, 15);
+
+}
+
+link[subordinates]:before{
+    ID:
+        oxy_label(text, "Subordinates:", wTypeth, 8em)
+        oxy_popup(
+            columns, 20,
+            fontInherit, true,
+            edit, '@subordinates',  
+            selectionMode, multiple,
+            rendererSeparator, ", ");
+}
+
+Type {
+        display: block;
+        padding-bottom:0.2em;
+       -oxy-display-tags:none;
+       padding-left: 0.2em;
+       text-align: left;
+       font-size: 0.6em;
+       color:chocolate;
+}
+
+ID {
+        display: block;
+        padding-bottom:0.2em;
+       -oxy-display-tags:none;
+       padding-left: 0.2em;
+       text-align: left;
+       font-size: 0.6em;
+       color:sienna;
+}
+
+
+
+
