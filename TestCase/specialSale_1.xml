@@ -1,23 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?xml-stylesheet type="text/css" href="wukong.css"?>
 <TestCaseSuite link="/weixin/specialSale/index.html">
-    <TestCase id="specialSale_1.1" >                
-        <necessary>
-            <Type>XPath</Type>
-            <ID>html/body/div[1]/div[1]/a/div[1]/p/span[1]</ID>
-            <Content>新手专享·限1笔</Content>
-        </necessary>
+    <TestCase id="specialSale_1.1">
+        <Type>XPath</Type>
+        <ID>html/body/div[1]/div[1]/a/div[1]/p/span[1]</ID>
+        <Content>新手专享·限1笔</Content>
         <remark>未登录和新手才显示</remark>
-        <url href="未登录和新手的Xpath和已登录并且购买过的不一样"/>
-    </TestCase>
-    <TestCase id="specialSale_1.2">
-        <necessary>
-            <Type>XPath</Type>
-            <ID>html/body/div[1]/div[1]/a/div[1]/p/span[2]</ID>
-            <Content>（第WKBTM02116082801期）</Content>
-        </necessary>
-        <link subordinates="robert.taylor helen.jackson michelle.taylor jason.chen harris.anderson brian.carter"/>
-        <url href=" "/>
     </TestCase>
 
+    <TestCase id="specialSale_1.2">
+        <Type>XPath</Type>
+        <ID>html/body/div[1]/div[1]/a/div[1]/p/span[2]</ID>
+        <Content>（第WKBTM02116082801期）</Content>
+        <remark> </remark>
+    </TestCase>
+    <TestCase id="specialSale_1.3">
+        <Type>XPath</Type>
+        <ID>html/body/div[1]/div[1]/a/div[2]/p</ID>
+        <Content>预期年化收益率</Content>
+        <remark> </remark>
+    </TestCase>
+    
 </TestCaseSuite>
