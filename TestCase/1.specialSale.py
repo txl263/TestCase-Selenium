@@ -28,12 +28,16 @@ class Wukong(unittest.TestCase):
     def test_specialSale_obj_pro(self):
         driver = self.driver
         driver.get(self.baseUrl + "/weixin/specialSale/index.html")
+        driver.set_window_size(450, 800)
         driver.find_element_by_id("bt").click()
         for i in range(0,len(root)):
         	if root[i][0].text == "XPath":
-	            if driver.find_element_by_xpath(root[i][1].text) == root[i][2].text :
-
-					print "Success!"
+        		self.assertEqual(driver.find_element_by_xpath(root[i][1].text).text , root[i][2].text)
+        		#self.assertTrue(driver.find_element_by_xpath(root[i][1].text).text == root[i][2].text)
+        #driver.get_screenshot_as_file("test.png")
+        #driver.save_screenshot("shot.png")
+        driver.find_element_by_xpath("html/body/div[1]/div[1]").click() #第一个产品
+        
         time.sleep(2)
 
     def is_element_present(self, how, what):

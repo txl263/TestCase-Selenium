@@ -7,18 +7,42 @@
         <Content>新手专享·限1笔</Content>
         <remark>未登录和新手才显示</remark>
     </TestCase>
-
     <TestCase id="specialSale_1.2">
         <Type>XPath</Type>
         <ID>html/body/div[1]/div[1]/a/div[1]/p/span[2]</ID>
-        <Content>（第WKBTM02116082801期）</Content>
-        <remark> </remark>
+        <Content>（第WKBTM02116083001期）</Content>
+        <remark>新手专享</remark>
     </TestCase>
     <TestCase id="specialSale_1.3">
         <Type>XPath</Type>
         <ID>html/body/div[1]/div[1]/a/div[2]/p</ID>
         <Content>预期年化收益率</Content>
-        <remark> </remark>
+        <remark>新手专享</remark>
+    </TestCase>
+    <TestCase id="specialSale_1.3">
+        <Type>XPath</Type>
+        <ID>html/body/div[1]/div[1]/a/div[3]/p</ID>
+        <Content>15.0%</Content>
+        <remark>新手专享</remark>
+    </TestCase>
+    <TestCase id="specialSale_1.3">
+        <Type>XPath</Type>
+        <ID>html/body/div[1]/div[1]/a/div[4]/p[1]/span</ID>
+        <Content>封闭期21天</Content>
+        <remark>新手专享</remark>
+    </TestCase>
+    <TestCase id="specialSale_1.3">
+        <Type>XPath</Type>
+        <ID>html/body/div[1]/div[1]/a/div[4]/p[2]/span</ID>
+        <Content>100元起投</Content>
+        <remark>新手专享</remark>
+    </TestCase>
+    <TestCase id="specialSale_1.3">
+        <Type>XPath</Type>
+        <ID>html/body/div[1]/div[1]/a/div[4]/p[3]/span</ID>
+        <Content>限购5万元</Content>
+        <remark>新手专享</remark>
     </TestCase>
     
+
 </TestCaseSuite>
