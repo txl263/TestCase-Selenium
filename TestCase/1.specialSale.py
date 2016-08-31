@@ -30,6 +30,7 @@ class Wukong(unittest.TestCase):
         driver.get(self.baseUrl + "/weixin/specialSale/index.html")
         driver.set_window_size(450, 800)
         driver.find_element_by_id("bt").click()
+        print (driver.find_element_by_xpath("html/body/div[1]/div[1]/a/div[4]/p[2]/span").text)
         for i in range(0,len(root)):
         	if root[i][0].text == "XPath":
         		self.assertEqual(driver.find_element_by_xpath(root[i][1].text).text , root[i][2].text)
