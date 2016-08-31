@@ -17,6 +17,7 @@ Selenium TestCase Wukong
  使用XML存储每个页面元素的ID（或者class名字或者xpath路径）和属性。  
  使用XML存储每一个测试场景片段。  
  使用XML存储场景组合的测试用例。  
+ 每个产品存为一个XML文件。  
  
  特卖页XPath分析  
  根：html/body/div[1]  
@@ -28,7 +29,7 @@ Selenium TestCase Wukong
     封闭期：       html/body/div[1]/div[x]/a/div[4]/p[1]/span  
     起投：         html/body/div[1]/div[x]/a/div[4]/p[2]/span  
     限购：         html/body/div[1]/div[x]/a/div[4]/p[3]/span  
-    马上加入：      /html/body/div[1]/div[2]/div/a  
+    马上加入：      html/body/div[1]/div[x]/div/a  
 
 因为有新手包的存在，所以对于已经购买过产品的用户和新用户同一个产品的XPath：html/body/div[1]/div[x]中的x会不同。  
 解决办法：
@@ -52,4 +53,4 @@ Selenium TestCase Wukong
               抛异常：AttributeError: 'WebDriver' object has no attribute 'get_attribute'
 
 
-    /html/body/div[1]/div[3]  
+ /html/body/div[1]/div[3]  
