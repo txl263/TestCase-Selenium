@@ -25,31 +25,22 @@ class Wukong(unittest.TestCase):
         self.verificationErrors=[]  #脚本运行时，错误的信息将被打印到这个列表中#
         self.accept_next_alert=True  #是否继续接受下一个警告#
 
-    def test_specialSale_obj_pro(self):
-        driver = self.driver
-        driver.get(self.baseUrl + "/weixin/specialSale/index.html")
-        driver.set_window_size(450, 800)
-        driver.find_element_by_id("bt").click()
-        #print (driver.find_element_by_xpath("html/body/div[1]/div[1]/a/div[4]/p[1]/span").text)
-        for i in range(0,len(root)):
-            if root[i][0].text == "XPath":
-                self.assertEqual(driver.find_element_by_xpath(root[i][1].text).text , root[i][2].text)
-                #self.assertTrue(driver.find_element_by_xpath(root[i][1].text).text == root[i][2].text)
-        #driver.get_screenshot_as_file("test.png")
-        #driver.save_screenshot("shot.png")
-        driver.find_element_by_xpath("html/body/div[1]/div[1]").click() #第一个产品
-        
-        time.sleep(2)
-
     def test_specialSale_new(self):
         driver = self.driver
         driver.get(self.baseUrl + "/weixin/specialSale/index.html")
         driver.set_window_size(450, 800)
         driver.find_element_by_id("bt").click()
-        tree = ET.parse('新手专享·限1笔_TFB-20160823.XML')
+        tree = ET.parse('New_TFB-20160823.XML')
         root = tree.getroot()
-        driver.findElement(By.xpath("//span[text()='封闭期21天']"))
-        print (driver.findElements(By.xpath("//span[text()='封闭期21天']/parent::section/parent::section/parent::section)").text)
+        #print (driver.find_element_by_xpath("html/body/div[1]/div[1]/a/div[4]/p[1]/span").text) 
+        #driver.find_elements_by_xpath("//span[text()='封闭期21天']")
+        #list = driver.find_elements_by_xpath("//span[text()='封闭期'] and b[text()='21']")
+        list = driver.find_elements_by_xpath("//span[b[text()='21']]")
+        for lists in list:
+            print lists.text
+        #parent = driver.find_element_by_xpath("//span[text()='封闭期21天']parent::section")
+        #print (parent)
+        #print (driver.find_element_by_xpath("//span[text()='封闭期21天']/parent::section/parent::section/parent::section)").text)
         time.sleep(2)
 
     def is_element_present(self, how, what):
