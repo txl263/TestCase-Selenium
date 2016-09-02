@@ -30,7 +30,7 @@ class Wukong(unittest.TestCase):
         driver.get(self.baseUrl + "/weixin/specialSale/index.html")
         driver.set_window_size(450, 800)
         driver.find_element_by_id("bt").click()
-        #print (driver.find_element_by_xpath("html/body/div[1]/div[1]/a/div[4]/p[1]/span").text)
+        #print (driver.find_element_by_xpath("html/body/div[1]/div[1]/a/div[4]/p[2]/span").text)
         for i in range(0,len(root)):
             if root[i][0].text == "XPath":
                 self.assertEqual(driver.find_element_by_xpath(root[i][1].text).text , root[i][2].text)
@@ -39,17 +39,6 @@ class Wukong(unittest.TestCase):
         #driver.save_screenshot("shot.png")
         driver.find_element_by_xpath("html/body/div[1]/div[1]").click() #第一个产品
         
-        time.sleep(2)
-
-    def test_specialSale_new(self):
-        driver = self.driver
-        driver.get(self.baseUrl + "/weixin/specialSale/index.html")
-        driver.set_window_size(450, 800)
-        driver.find_element_by_id("bt").click()
-        tree = ET.parse('新手专享·限1笔_TFB-20160823.XML')
-        root = tree.getroot()
-        driver.findElement(By.xpath("//span[text()='封闭期21天']"))
-        print (driver.findElements(By.xpath("//span[text()='封闭期21天']/parent::section/parent::section/parent::section)").text)
         time.sleep(2)
 
     def is_element_present(self, how, what):

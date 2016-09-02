@@ -36,8 +36,10 @@ class Wukong(unittest.TestCase):
         #driver.find_elements_by_xpath("//span[text()='封闭期21天']")
         #list = driver.find_elements_by_xpath("//span[text()='封闭期'] and b[text()='21']")
         list = driver.find_elements_by_xpath("//span[b[text()='21']]")
+        list = driver.find_elements_by_xpath("//div[a/div/p/span/b[text()='21']]")
         for lists in list:
             print lists.text
+
         #parent = driver.find_element_by_xpath("//span[text()='封闭期21天']parent::section")
         #print (parent)
         #print (driver.find_element_by_xpath("//span[text()='封闭期21天']/parent::section/parent::section/parent::section)").text)
