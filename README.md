@@ -42,7 +42,13 @@ Selenium TestCase Wukong
 可以通过  
 `driver.find_elements_by_xpath("//span[b[text()='21']]")`  
 定位到。
-产品的节点可以通过`driver.find_elements_by_xpath("//div/a/div/p/span[b[text()='21']]")`
+产品的节点可以通过`driver.find_elements_by_xpath("//div[a/div/p/span/b[text()='21']]")`定位到。
+````
+#coding=utf-8
+from selenium import webdriver
+from selenium.webdriver.common.by import By
+from selenium.webdriver.common import keys    
+````
 
 
 
