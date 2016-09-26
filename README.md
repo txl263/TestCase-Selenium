@@ -40,9 +40,13 @@ Selenium TestCase Wukong
 比如：封闭期21天的节点   
 `html/body/div[1]/div[1]/a/div[4]/p[1]/span`  
 可以通过  
-`driver.find_elements_by_xpath("//span[b[text()='21']]")`  
-定位到。
-产品的节点可以通过`driver.find_elements_by_xpath("//div[a/div/p/span/b[text()='21']]")`定位到。
+`driver.find_elements_by_xpath("//span[b[text()='21']]")`定位到。  
+_定位一个span它包含子元素b，并且b包含文本‘21’。_  
+产品的节点可以通过`driver.find_elements_by_xpath("//div[a/div/p/span/b[text()='21']]")`定位到。  
+_定位一个div它包含一个指定的路径‘a/div/p/span/b’，并且b包含文本‘21’。_  
+**这样的方法可以无视产品的排列顺序。**
+
+
 ````
 #coding=utf-8
 from selenium import webdriver

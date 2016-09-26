@@ -1,21 +1,14 @@
 #coding=utf-8
+from __future__ import unicode_literals
 from selenium import webdriver
-from selenium.webdriver.common.by import By
-from selenium.webdriver.common import keys     
-#from selenium.webdriver.common.keys import Keys#
-from selenium.webdriver.support import select
-#from selenium.webdriver.support.ui import Select#
-from selenium.common import exceptions
 from selenium.common.exceptions import NoSuchElementException
 from selenium.common.exceptions import NoAlertPresentException
-import unittest,time,re
+import unittest, time, re
 import xml.etree.ElementTree as ET
 tree = ET.parse('specialSale_1.xml')
 root = tree.getroot()
 #for child_of_root in root:
     #print child_of_root.tag, child_of_root.attrib
-
-
 #setUp 用于设置初始化的部分，在测试用例执行前，这个方法中的函数将先被调用。这里将浏览器的调用和URL的访问放到初始化部分。#
 class Wukong(unittest.TestCase):
     def setUp(self):
@@ -37,8 +30,8 @@ class Wukong(unittest.TestCase):
         #list = driver.find_elements_by_xpath("//span[text()='封闭期'] and b[text()='21']")
         #list = driver.find_elements_by_xpath("//span[b[text()='21']]")
         list = driver.find_elements_by_xpath("//div[a/div/p/span/b[text()='21']]")
-        for lists in list:
-            print lists.text
+        product_name = (driver.find_element_by_xpath("//div[a/div/p/span/b[text()='21']]/a/div[1]/p/span[1]").text)
+        print product_name
 
         #parent = driver.find_element_by_xpath("//span[text()='封闭期21天']parent::section")
         #print (parent)
