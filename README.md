@@ -1,6 +1,6 @@
 # TestCase-Selenium
 Selenium TestCase Wukong
-### 分类  
+### 分类（产品、资产、设置等等）  
 1. specialSale  
 	a. 所有对象和它们的属性（文本、数值）  
 	b. 各个对象的事件（click等）
