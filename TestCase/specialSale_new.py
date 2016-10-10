@@ -1,3 +1,9 @@
+#!/usr/bin/python
+# -*- coding: UTF-8 -*-
+# Created by Sublime.
+# User: Eric
+# Date：2016年10月10日10:56:39
+# Module：新手专享·限1笔
 #coding=utf-8
 from __future__ import unicode_literals
 from selenium import webdriver
@@ -31,6 +37,7 @@ class Wukong(unittest.TestCase):
         #list = driver.find_elements_by_xpath("//span[b[text()='21']]")
         list = driver.find_elements_by_xpath("//div[a/div/p/span/b[text()='21']]")
         product_name = (driver.find_element_by_xpath("//div[a/div/p/span/b[text()='21']]/a/div[1]/p/span[1]").text)
+        self.assertEqual (product_name, "新手专享·限1笔")
         print product_name
 
         #parent = driver.find_element_by_xpath("//span[text()='封闭期21天']parent::section")
