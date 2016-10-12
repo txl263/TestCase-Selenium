@@ -36,9 +36,30 @@ class Wukong(unittest.TestCase):
         #list = driver.find_elements_by_xpath("//span[text()='封闭期'] and b[text()='21']")
         #list = driver.find_elements_by_xpath("//span[b[text()='21']]")
         list = driver.find_elements_by_xpath("//div[a/div/p/span/b[text()='21']]")
-        product_name = (driver.find_element_by_xpath("//div[a/div/p/span/b[text()='21']]/a/div[1]/p/span[1]").text)
-        self.assertEqual (product_name, "新手专享·限1笔")
-        print product_name
+        product_Name = (driver.find_element_by_xpath("//div[a/div/p/span/b[text()='21']]/a/div[1]/p/span[1]").text)
+        product_Number = (driver.find_element_by_xpath("//div[a/div/p/span/b[text()='21']]/a/div[1]/p/span[2]").text)
+        product_Profit = (driver.find_element_by_xpath("//div[a/div/p/span/b[text()='21']]/a/div[3]/p").text)
+        product_Hold_day = (driver.find_element_by_xpath("//div[a/div/p/span/b[text()='21']]/a/div[4]/p[1]/span").text)
+        product_Min_invest = (driver.find_element_by_xpath("//div[a/div/p/span/b[text()='21']]/a/div[4]/p[2]/span").text)
+        product_Max_invest = (driver.find_element_by_xpath("//div[a/div/p/span/b[text()='21']]/a/div[4]/p[3]/span").text)
+        # product_Jion
+
+        self.assertEqual (product_Name, "新手专享·限1笔")
+        self.assertEqual (product_Profit, "15.0%")
+        self.assertEqual (product_Hold_day, "封闭期21天")
+        self.assertEqual (product_Min_invest, "100元起投")
+        self.assertEqual (product_Max_invest, "限购5万元")
+        driver.find_element_by_xpath("//div[a/div/p/span/b[text()='21']]/div/a/p").click()   #点击马上加入
+        print  driver.current_url
+
+
+        # print product_Name
+        # print product_Profit
+        # print product_Hold_day
+        # print product_Min_invest
+        # # print product_Max_invest
+        # for lists in list:
+        #     print lists.text
 
         #parent = driver.find_element_by_xpath("//span[text()='封闭期21天']parent::section")
         #print (parent)
