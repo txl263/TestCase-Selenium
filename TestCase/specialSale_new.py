@@ -50,6 +50,7 @@ class Wukong(unittest.TestCase):
         self.assertEqual (product_Min_invest, "100元起投")
         self.assertEqual (product_Max_invest, "限购5万元")
         driver.find_element_by_xpath("//div[a/div/p/span/b[text()='21']]/div/a/p").click()   #点击马上加入
+        # driver.find_element_by_link_text("马上加入").click()
         print  driver.current_url
 
 
