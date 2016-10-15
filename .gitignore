@@ -1,2 +1,5 @@
 .DS_Store
 database.py
+password.py
+password.pyc
+TestCase/capture

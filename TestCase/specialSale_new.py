@@ -11,6 +11,7 @@ from selenium.common.exceptions import NoSuchElementException
 from selenium.common.exceptions import NoAlertPresentException
 import unittest, time, re
 import xml.etree.ElementTree as ET
+import password
 tree = ET.parse('specialSale_1.xml')
 root = tree.getroot()
 #for child_of_root in root:
@@ -52,6 +53,12 @@ class Wukong(unittest.TestCase):
         driver.find_element_by_xpath("//div[a/div/p/span/b[text()='21']]/div/a/p").click()   #点击马上加入
         # driver.find_element_by_link_text("马上加入").click()
         print  driver.current_url
+        driver.find_element_by_id("mobile").send_keys(password.mobile)
+        driver.find_element_by_class_name("login_btn").click()
+        driver.find_element_by_id("password").send_keys(password.password)
+        driver.find_element_by_class_name("login_btn").click()
+        driver.get_screenshot_as_file("capture/login.png")
+
 
 
         # print product_Name
