@@ -7,6 +7,7 @@
 #coding=utf-8
 from __future__ import unicode_literals
 from selenium import webdriver
+from selenium.webdriver.common.keys import Keys
 from selenium.common.exceptions import NoSuchElementException
 from selenium.common.exceptions import NoAlertPresentException
 import unittest, time, re
@@ -28,14 +29,22 @@ class Wukong(unittest.TestCase):
     def test_specialSale_new(self):
         driver = self.driver
         driver.get(self.baseUrl + "/weixin/specialSale/index.html")
-        driver.set_window_size(450, 800)
-        driver.find_element_by_id("bt").click()
+        driver.set_window_size(450, 800)  #调整窗口大小
+        driver.get_screenshot_as_file("capture/1_1.png")   #截图
+        driver.find_element_by_id("bt").click()    #点击马上
+        time.sleep(1)
+        driver.get_screenshot_as_file("capture/1_2.png")   #截图
         tree = ET.parse('New_TFB-20160823.XML')
         root = tree.getroot()
-        #print (driver.find_element_by_xpath("html/body/div[1]/div[1]/a/div[4]/p[1]/span").text) 
-        #driver.find_elements_by_xpath("//span[text()='封闭期21天']")
-        #list = driver.find_elements_by_xpath("//span[text()='封闭期'] and b[text()='21']")
-        #list = driver.find_elements_by_xpath("//span[b[text()='21']]")
+        
+        driver.execute_script("window.scrollTo(0, 500);")      #滚动到底部
+        time.sleep(1)    
+        driver.get_screenshot_as_file("capture/1_3.png")   #截图
+        driver.execute_script("window.scrollTo(0, document.body.scrollHeight);")      #滚动到底部
+        time.sleep(1)    
+        driver.get_screenshot_as_file("capture/1_4.png")   #截图
+
+
         list = driver.find_elements_by_xpath("//div[a/div/p/span/b[text()='21']]")
         product_Name = (driver.find_element_by_xpath("//div[a/div/p/span/b[text()='21']]/a/div[1]/p/span[1]").text)
         product_Number = (driver.find_element_by_xpath("//div[a/div/p/span/b[text()='21']]/a/div[1]/p/span[2]").text)
@@ -51,13 +60,20 @@ class Wukong(unittest.TestCase):
         self.assertEqual (product_Min_invest, "100元起投")
         self.assertEqual (product_Max_invest, "限购5万元")
         driver.find_element_by_xpath("//div[a/div/p/span/b[text()='21']]/div/a/p").click()   #点击马上加入
+        time.sleep(1)
+        driver.get_screenshot_as_file("capture/2_1.png")   #截图
         # driver.find_element_by_link_text("马上加入").click()
         print  driver.current_url
         driver.find_element_by_id("mobile").send_keys(password.mobile)
+        driver.get_screenshot_as_file("capture/2_2.png")   #截图
         driver.find_element_by_class_name("login_btn").click()
+        time.sleep(1)
+        driver.get_screenshot_as_file("capture/3_1.png")   #截图
+        time.sleep(1)
         driver.find_element_by_id("password").send_keys(password.password)
+        driver.get_screenshot_as_file("capture/3_2.png")   #截图
         driver.find_element_by_class_name("login_btn").click()
-        driver.get_screenshot_as_file("capture/login.png")
+        driver.get_screenshot_as_file("capture/4_1.png")
 
 
 
