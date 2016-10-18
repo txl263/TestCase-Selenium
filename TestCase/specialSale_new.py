@@ -33,16 +33,16 @@ class Wukong(unittest.TestCase):
         driver.get_screenshot_as_file("capture/1_1.png")   #截图
         driver.find_element_by_id("bt").click()    #点击马上
         time.sleep(1)
-        driver.get_screenshot_as_file("capture/1_2.png")   #截图
+        driver.get_screenshot_as_file("capture/1_2.png")   #截图 推荐页
         tree = ET.parse('New_TFB-20160823.XML')
         root = tree.getroot()
         
-        driver.execute_script("window.scrollTo(0, 500);")      #滚动到底部
+        driver.execute_script("window.scrollTo(0, 500);")      #滚动到中间 
         time.sleep(1)    
-        driver.get_screenshot_as_file("capture/1_3.png")   #截图
+        driver.get_screenshot_as_file("capture/1_3.png")   #截图 推荐页
         driver.execute_script("window.scrollTo(0, document.body.scrollHeight);")      #滚动到底部
         time.sleep(1)    
-        driver.get_screenshot_as_file("capture/1_4.png")   #截图
+        driver.get_screenshot_as_file("capture/1_4.png")   #截图 推荐页底部
 
 
         list = driver.find_elements_by_xpath("//div[a/div/p/span/b[text()='21']]")
@@ -61,7 +61,7 @@ class Wukong(unittest.TestCase):
         self.assertEqual (product_Max_invest, "限购5万元")
         driver.find_element_by_xpath("//div[a/div/p/span/b[text()='21']]/div/a/p").click()   #点击马上加入
         time.sleep(1)
-        driver.get_screenshot_as_file("capture/2_1.png")   #截图
+        driver.get_screenshot_as_file("capture/2_1.png")   #截图  手机号输入页面
         # driver.find_element_by_link_text("马上加入").click()
         print  driver.current_url
         driver.find_element_by_id("mobile").send_keys(password.mobile)
