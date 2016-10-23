@@ -10,6 +10,8 @@ from selenium.common.exceptions import NoSuchElementException
 from selenium.common.exceptions import NoAlertPresentException
 import unittest, time, re
 import password
+import pytesseract
+from PIL import Image
 class WukongLogin(unittest.TestCase):
     def setUp(self):
         self.driver = webdriver.Chrome()
@@ -28,10 +30,48 @@ class WukongLogin(unittest.TestCase):
         cookie = driver.get_cookie('utoken')
         print cookie
         time.sleep(1)
-        driver.find_element_by_id("mobile").send_keys(password.mobile)
+        driver.find_element_by_id("mobile").send_keys("13711111111")
         driver.find_element_by_class_name("login_btn").click()
-        driver.find_element_by_id("password").send_keys(password.password)
+        time.sleep(2)
+        # driver.find_element_by_id("password").send_keys(password.password)
+        # driver.find_element_by_class_name("login_btn").click()
+        # driver.find_element_by_xpath("//*[@id="login_do"]/img")
+        
+        driver.get_screenshot_as_file("capture/verify.png")   #截图
+        im =Image.open('capture/verify.png')
+        box = (330,25,429,80) 
+        region = im.crop(box)
+        region.save("capture/verify_1.png")
+        image = Image.open("capture/verify_1.png")
+        vcode = pytesseract.image_to_string(image)
+        print (vcode)
+        # time.sleep(2)
+        vcode = re.sub("\D","",vcode)
+        print (vcode)
+        driver.find_element_by_id("captcha").send_keys(vcode)
         driver.find_element_by_class_name("login_btn").click()
+        
+        while driver.find_element_by_id(".//*[@id='bto']"):
+            driver.find_element_by_id(".//*[@id='bto']").click()
+            driver.find_element_by_xpath(".//*[@id='login_do']/img").click()
+            driver.get_screenshot_as_file("capture/verify.png")   #截图
+            im =Image.open('capture/verify.png')
+            box = (330,25,429,80) 
+            region = im.crop(box)
+            region.save("capture/verify_1.png")
+            image = Image.open("capture/verify_1.png")
+            vcode = pytesseract.image_to_string(image)
+            print (vcode)
+            vcode = re.sub("\D","",vcode)
+            print (vcode)
+            # time.sleep(2)
+            driver.find_element_by_id("captcha").clear()
+            driver.find_element_by_id("captcha").send_keys(vcode)
+            driver.find_element_by_class_name("login_btn").click()
+        time.sleep(2)
+
+
+
 
     def is_element_present(self, how, what):
         try: self.driver.find_element(by=how, value=what)
