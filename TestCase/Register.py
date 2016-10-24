@@ -12,7 +12,7 @@ import unittest, time, re
 import password
 import pytesseract
 from PIL import Image
-class WukongLogin(unittest.TestCase):
+class WukongRegister(unittest.TestCase):
     def setUp(self):
         self.driver = webdriver.Chrome()
         self.driver.implicitly_wait(30)
