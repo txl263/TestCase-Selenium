@@ -27,51 +27,67 @@ class WukongLogin(unittest.TestCase):
         driver.find_element_by_id("bt").click()
         driver.find_element_by_link_text("马上加入").click()
         time.sleep(1)
-        cookie = driver.get_cookie('utoken')
-        print cookie
+        # cookie = driver.get_cookie('utoken')
+        # print cookie
         time.sleep(1)
-        driver.find_element_by_id("mobile").send_keys("13711111111")
+        driver.find_element_by_id("mobile").send_keys("13711111114")
         driver.find_element_by_class_name("login_btn").click()
+        #跳转到验证码输入页
         time.sleep(2)
-        # driver.find_element_by_id("password").send_keys(password.password)
-        # driver.find_element_by_class_name("login_btn").click()
-        # driver.find_element_by_xpath("//*[@id="login_do"]/img")
-        
         driver.get_screenshot_as_file("capture/verify.png")   #截图
         im =Image.open('capture/verify.png')
-        box = (330,25,429,80) 
+        box = (330,25,429,80)
         region = im.crop(box)
         region.save("capture/verify_1.png")
         image = Image.open("capture/verify_1.png")
         vcode = pytesseract.image_to_string(image)
+        #验证码识别
         print (vcode)
         # time.sleep(2)
         vcode = re.sub("\D","",vcode)
-        print (vcode)
-        driver.find_element_by_id("captcha").send_keys(vcode)
-        driver.find_element_by_class_name("login_btn").click()
-        
-        while driver.find_element_by_id(".//*[@id='bto']"):
-            driver.find_element_by_id(".//*[@id='bto']").click()
-            driver.find_element_by_xpath(".//*[@id='login_do']/img").click()
-            driver.get_screenshot_as_file("capture/verify.png")   #截图
-            im =Image.open('capture/verify.png')
-            box = (330,25,429,80) 
-            region = im.crop(box)
-            region.save("capture/verify_1.png")
-            image = Image.open("capture/verify_1.png")
-            vcode = pytesseract.image_to_string(image)
+        if not vcode.strip():
+            print ("vcode为空")
+            driver.find_element_by_class_name("login_btn").click()
+        else:
             print (vcode)
-            vcode = re.sub("\D","",vcode)
-            print (vcode)
-            # time.sleep(2)
-            driver.find_element_by_id("captcha").clear()
             driver.find_element_by_id("captcha").send_keys(vcode)
             driver.find_element_by_class_name("login_btn").click()
+        # time.sleep(1)
+        i = 1
+        try:
+            while driver.find_element_by_xpath(".//*[@id='bto']"):
+                i = i+1
+                vcode = ""
+                print ("进入循环")
+                driver.find_element_by_xpath(".//*[@id='bto']").click()
+                print ("点击确定")
+                driver.find_element_by_xpath(".//*[@id='login_do']/img").click()
+                print ("点击图片刷新验证码")
+                time.sleep(0.1)
+                driver.get_screenshot_as_file("capture/verify.png")   #截图
+                im =Image.open('capture/verify.png')
+                box = (330,25,429,80) 
+                region = im.crop(box)
+                region.save("capture/verify_1.png")
+                image = Image.open("capture/verify_1.png")
+                vcode = pytesseract.image_to_string(image)
+                print (vcode)
+                vcode = re.sub("\D","",vcode)
+                print (vcode)
+                # time.sleep(2)
+                driver.find_element_by_id("captcha").clear()
+                driver.find_element_by_id("captcha").send_keys(vcode)
+                time.sleep(0.5)
+                driver.find_element_by_class_name("login_btn").click()
+                time.sleep(0.5)
+        except Exception, e:
+            errMessage = str(i) + "次通过验证码" 
+            print errMessage
+        else:
+            pass
+
         time.sleep(2)
-
-
-
+        print ("还能继续吗")
 
     def is_element_present(self, how, what):
         try: self.driver.find_element(by=how, value=what)
