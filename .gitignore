@@ -8,3 +8,5 @@ dist
 build
 TestCase/capture
 ~$*
+debug.log
+TestCase/SSDB.pyc

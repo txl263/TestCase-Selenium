@@ -13,7 +13,7 @@ except Exception , e:
 	print e
 	sys.exit(0)
 
-print ssdb.request('get', ['10538'])
+print ssdb.request('get', ['V13520692413'])
 # print ssdb.request('set', ['test', '123'])
 # print ssdb.request('get', ['test'])
 # print ssdb.request('incr', ['test', '1'])
