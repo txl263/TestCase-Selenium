@@ -34,7 +34,8 @@ class WukongRegister(unittest.TestCase):
     def test_login(self):
         driver = self.driver
         driver.get(self.baseUrl + "/weixin/specialSale/index.html")
-        driver.set_window_size(450, 800)
+        # driver.set_window_size(450, 800)
+        driver.set_window_size(400, 650)    #针对
         driver.find_element_by_id("bt").click()
         driver.find_element_by_link_text("马上加入").click()
         time.sleep(1)
@@ -47,7 +48,8 @@ class WukongRegister(unittest.TestCase):
         time.sleep(2)
         driver.get_screenshot_as_file("capture/verify.png")   #截图
         im =Image.open('capture/verify.png')
-        box = (330,25,429,80)
+        # box = (330,25,429,80)
+        box = (264,25,360,74)
         region = im.crop(box)
         region.save("capture/verify_1.png")
         image = Image.open("capture/verify_1.png")
@@ -78,7 +80,6 @@ class WukongRegister(unittest.TestCase):
                 time.sleep(0.1)
                 driver.get_screenshot_as_file("capture/verify.png")   #截图
                 im =Image.open('capture/verify.png')
-                box = (330,25,429,80) 
                 region = im.crop(box)
                 region.save("capture/verify_1.png")
                 image = Image.open("capture/verify_1.png")
@@ -101,7 +102,8 @@ class WukongRegister(unittest.TestCase):
         time.sleep(2)
         print ("还能继续吗")
         vmobile = "V" + str(mobile)
-        vcaptcha = ssdb.request('get', [vmobile])   #从SSDB获取验证码
+        time.sleep(3)
+        vcaptcha = str(ssdb.request('get', [vmobile]))[-4:]   #从SSDB获取验证码
         print (str(vcaptcha))
         driver.find_element_by_id("captcha").send_keys(vcaptcha)    #填写验证码
         driver.find_element_by_id("password").send_keys("111111")

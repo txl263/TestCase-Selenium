@@ -3,7 +3,6 @@
 # 2013-01-26 21:04:47.984000
 import os, sys
 from sys import stdin, stdout
-
 from SSDB import SSDB
 try:
 	pass
@@ -13,7 +12,9 @@ except Exception , e:
 	print e
 	sys.exit(0)
 
-print ssdb.request('get', ['V13520692413'])
+string = str(ssdb.request('get', ['V13520692413']))[-4:]
+print string
+
 # print ssdb.request('set', ['test', '123'])
 # print ssdb.request('get', ['test'])
 # print ssdb.request('incr', ['test', '1'])
