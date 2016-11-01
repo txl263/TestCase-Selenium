@@ -10,4 +10,8 @@ TestCase/capture
 debug.log
 *.pyc
 TestCase/SSDB.pyc
-~$*
+TestCase/growing_new.xlsx
+
+TestCase/filename.xlsx
+
+TestCase/~$growing.xlsx

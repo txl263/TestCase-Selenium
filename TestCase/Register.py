@@ -23,6 +23,7 @@ except Exception , e:
     sys.exit(0)
 from PIL import Image
 mobile = 13520692413
+
 class WukongRegister(unittest.TestCase):
     def setUp(self):
         self.driver = webdriver.Chrome()
