@@ -30,53 +30,23 @@ driver.find_element_by_class_name("login_btn").click()
 
 worksheet1 = workbook.add_worksheet()				# 创建worksheet，括号里可传worksheet的名字，如workbook.add_worksheet('abc')
 for i in range(nrows): # 循环逐行打印
-	# if i == 0: # 跳过第一行
-	# 	continue
-	print table.row_values(i)[0:2] # 取前十三列
+	# if i == 3: # 跳过第一行
+	# 	break
+	# print table.row_values(i)[0:2] # 取前十三列
 	col1value = table.row_values(i)[0]
 	col2value = table.row_values(i)[1]
 	col3value = table.row_values(i)[2]
-	coloum1 = "A" + str(i)	# 在excel文件的$A$1位置写入数字123
+	coloum1 = "A" + str(i+1)	# 在excel文件的$A$1位置写入数字123
 	worksheet1.write(coloum1, col1value)
-	coloum2 = "B" + str(i)
+	coloum2 = "B" + str(i+1)
 	worksheet1.write(coloum2,col2value)
-	coloum3 = "C" + str(i)
+	coloum3 = "C" + str(i+1)
 	worksheet1.write(coloum3,col3value)
 	driver.get(driver.baseUrl + col2value)
-	picname = "capture/" + str(i) + ".jpeg"
+	picname = "capture/" + str(i+1) + ".png"
 	driver.get_screenshot_as_file(picname)
-	coloum4 = "D" + str(i)
-	worksheet1.insert_image(coloum4, picname, {'x_offset':0.1, 'y_offset':0.1})
-	worksheet1.set_row(i, 40)    #设置第1行单元格高度为40像素，且引用加粗
+	coloum4 = "D" + str(i+1)
+	worksheet1.insert_image(coloum4, picname, {'x_scale':0.1, 'y_scale':0.1})
+	worksheet1.set_row(i, 60)
 workbook.close()
 
-def read_excel():
-# 打开文件
-	workbook = xlrd.open_workbook(r'TestCase_Login.xlsx')
-	# 获取所有sheet
-	print workbook.sheet_names() # [u'sheet1', u'sheet2']
-	sheet1_name = workbook.sheet_names()[1]
-	# 根据sheet索引或者名称获取sheet内容
-	sheet1 = workbook.sheet_by_index(1) # sheet索引从0开始
-	sheet1 = workbook.sheet_by_name('Test Case 1')
-	 
-	# sheet的名称，行数，列数
-	print sheet1.name,sheet1.nrows,sheet1.ncols
-	
-	# 获取整行和整列的值（数组）
-	rows = sheet1.row_values(3) # 获取第四行内容
-	cols = sheet1.col_values(2) # 获取第三列内容
-	print rows
-	print cols
-	 
-	# 获取单元格内容
-	print sheet1.cell(1,0).value.encode('utf-8')
-	print sheet1.cell_value(1,0).encode('utf-8')
-	print sheet1.row(1)[0].value.encode('utf-8')
-		 
-	# 获取单元格内容的数据类型
-	print sheet1.cell(1,0).ctype
- 
-
-if __name__=="__main__":
-    read_excel() #执行用例#
