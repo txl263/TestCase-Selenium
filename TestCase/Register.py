@@ -26,7 +26,7 @@ mobile = 13520692413
 
 class WukongRegister(unittest.TestCase):
     def setUp(self):
-        self.driver = webdriver.Chrome()
+        self.driver = webdriver.Firefox()
         self.driver.implicitly_wait(30)
         self.baseUrl = "http://test3.wukonglicai.com"
         self.verificationErrors=[]  #脚本运行时，错误的信息将被打印到这个列表中#

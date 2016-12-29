@@ -13,6 +13,7 @@ except Exception , e:
 	sys.exit(0)
 
 string = str(ssdb.request('get', ['V13520692413']))[-4:]
+
 print string
 
 # print ssdb.request('set', ['test', '123'])

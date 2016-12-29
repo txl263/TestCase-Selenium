@@ -1,0 +1,7 @@
+1478682814749	geckodriver	INFO	Listening on 127.0.0.1:6386
+1478682816681	mozprofile::profile	INFO	Using profile path C:\Users\Eric\AppData\Local\Temp\rust_mozprofile.3A1HWreVVdzL
+1478682816730	geckodriver::marionette	INFO	Starting browser C:\Program Files\Mozilla Firefox\firefox.exe
+1478682816737	geckodriver::marionette	INFO	Connecting to Marionette on localhost:6402
+1478682820552	Marionette	INFO	Listening on port 6402
+1478682826413	Marionette	INFO	startBrowser 3930f457-6580-44e2-84f1-b11ce65253cb
+ting the [[Prototype]] of an object will cause your code to run very slowly; instead create the object with the correct initial [[Prototype]] value using Object.create
