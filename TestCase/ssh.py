@@ -6,6 +6,7 @@ import pexpect
 if __name__ == '__main__':  
     user = 'root'  
     ip = '10.40.45.97'  
+    mypassword = 'xxxxxx'  
     child = pexpect.spawn('ssh %s@%s' % (user,ip))
     child.expect ('password:')  
     child.sendline (mypassword)  
